@@ -51,6 +51,7 @@ const postData = async ( url = '', data = {})=>{
 
 const updateUI = async() => {
   const update = await fetch('/data');
+  const data = await update.json();
   try{
     document.getElementById('date').innerHTML = newDate;
     document.getElementById('temp').innerHTML = data.temperature;
