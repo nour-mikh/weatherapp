@@ -28,8 +28,11 @@ app.get('/data', (req, res) => {
   });
   
 app.post('/data', (req, res) => {
+    console.log("req.body to post route", req.body)
     projectData.temperature = req.body.temperature
     projectData.date = req.body.date
     projectData.userResponse = req.body.feelings
-    res.end()
+    res.send({
+      msg: "Post received"
+    })
   })
