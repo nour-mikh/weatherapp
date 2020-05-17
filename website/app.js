@@ -15,7 +15,7 @@ const getWeather = async (baseURL, zip, apiKey) => {
     const data = await res.json();
     console.log(data);
     let feelings = document.getElementById('feelings').value
-    postData('/data', {date: newDate, temprature: data.main.temp, feelings: feelings });
+    postData('/data', {date: newDate, temperature: data.main.temp, feelings: feelings });
     updateUI();
     return data;
   }catch(error){
@@ -50,11 +50,11 @@ const postData = async ( url = '', data = {})=>{
 }
 
 const updateUI = async() => {
-  const update = await fetch('/all');
+  const update = await fetch('/data');
   try{
     document.getElementById('date').innerHTML = newDate;
-    document.getElementById('temp').innerHTML = data.main.temp;
-    document.getElementById('content').innerHTML = feelings;
+    document.getElementById('temp').innerHTML = data.temperature;
+    document.getElementById('content').innerHTML = data.userResponse;
   } catch(error) {
     console.log('error', error)
   }
